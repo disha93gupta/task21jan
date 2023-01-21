@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 50px;
+      }
+      #input {
+        width: 35%;
+        height: 40px;
+        padding: 10px;
+        border: 1px solid #808080;
+        border-radius: 10px;
+        margin-right: 70px;
+      }
+      #index-dex {
+        width: 100px;
+        height: 40px;
+        padding: 10px;
+        border: 1px solid #808080;
+        border-radius: 10px;
+        margin-right: 70px;
+      }
+      #search {
+        width: 35%;
+        height: 40px;
+        padding: 10px;
+        border: 1px solid #808080;
+        border-radius: 10px;
+        margin-right: 70px;
+      }
+      #select {
+        width: 35%;
+        height: 40px;
+        padding: 10px;
+        border: 1px solid #808080;
+        border-radius: 10px;
+        margin-right: 70px;
+      }
+      #textarea {
+        width: 35%;
+        height: 150px;
+        padding: 10px;
+        border: 1px solid #808080;
+        border-radius: 10px;
+        margin-right: 70px;
+      }
+ 
+      form.example input {
+        padding: 10px;
+        font-size: 17px;
+        border: 1px solid grey;
+        float: left;
+        width: 80%;
+        background: white;
+        border-radius: 10px 0 0 10px;
+        border-right: none;
+      }
+ 
+      form.example button {
+        /* float: left; */
+        width: 20%;
+        padding: 10px;
+        background: white;
+        color: #808080;
+        font-size: 17px;
+        border: 1px solid grey;
+        border-radius: 0 10px 10px 0px;
+      }
+ 
+      form.example button:hover {
+        background: #f1f1f1;
+      }
+ 
+      form.example::after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+ 
+      .right {
+        position: absolute;
+        left: 570px;
+        top: 180px;
+        width: 35%;
+        height: 300px;
+        /* padding: 10px; */
+        /* border: 1px solid red; */
+        /* border-radius: 10px; */
+        /* margin-right: 70px; */
+      }
+      span {
+        color: red;
+      }
+ 
+      /* ----------------------------------------------------- */
+ 
+      /* Customize the label (the container) */
+      .container {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+ 
+      /* Hide the browser's default checkbox */
+      .container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+ 
+      /* Create a custom checkbox */
+      .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+      }
+ 
+      /* On mouse-over, add a grey background color */
+      .container:hover input ~ .checkmark {
+        background-color: #ccc;
+      }
+ 
+      /* When the checkbox is checked, add a blue background */
+      .container input:checked ~ .checkmark {
+        background-color: #2196f3;
+      }
+ 
+      /* Create the checkmark/indicator (hidden when not checked) */
+      .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+      }
+ 
+      /* Show the checkmark when checked */
+      .container input:checked ~ .checkmark:after {
+        display: block;
+      }
+ 
+      /* Style the checkmark/indicator */
+      .container .checkmark:after {
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+ 
+      /* -------------------------------------------------------- */
+      /* Customize the label (the container-round) */
+      .container-round {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+ 
+      /* Hide the browser's default radio button */
+      .container-round input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+ 
+      /* Create a custom radio button */
+      .checkmark-round {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+        border-radius: 50%;
+      }
+ 
+      /* On mouse-over, add a grey background color */
+      .container-round:hover input ~ .checkmark-round {
+        background-color: #ccc;
+      }
+ 
+      /* When the radio button is checked, add a blue background */
+      .container-round input:checked ~ .checkmark-round {
+        background-color: #2196f3;
+      }
+ 
+      /* Create the indicator (the dot/circle - hidden when not checked) */
+      .checkmark-round:after {
+        content: "";
+        position: absolute;
+        display: none;
+      }
+ 
+      /* Show the indicator (dot/circle) when checked */
+      .container-round input:checked ~ .checkmark-round:after {
+        display: block;
+      }
+ 
+      /* Style the indicator (dot/circle) */
+      .container-round .checkmark-round:after {
+        top: 9px;
+        left: 9px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+      }
+ 
+      /* ------------------------------------------------ */
+      /* The switch - the box around the slider */
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+      }
+ 
+      /* Hide default HTML checkbox */
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+ 
+      /* The slider */
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+      }
+ 
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+      }
+ 
+      input:checked + .slider {
+        background-color: #2196f3;
+      }
+ 
+      input:focus + .slider {
+        box-shadow: 0 0 1px #2196f3;
+      }
+ 
+      input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+      }
+ 
+      /* Rounded sliders */
+      .slider.round {
+        border-radius: 34px;
+      }
+ 
+      .slider.round:before {
+        border-radius: 50%;
+      }
+      /* ------------------------------------------------ */
+    </style>
+  </head>
+  <body>
+    <p>Text Field <span>*</span></p>
+    <input type="text" id="input" placeholder="Input Text" />
+    <input type="text" id="search" placeholder="Search" /><br />
+ 
+    <p>Select Field</p>
+    <select name="" id="select">
+      <option value="">Select</option>
+    </select>
+ 
+    <p><label for="">Text Area</label></p>
+    <textarea id="textarea" name="w3review" rows="4" cols="50"></textarea>
+    <br />
+ 
+    <p>Text Field with Add-ons <span>*</span></p>
+    <form class="example" action="/action_page.php" style="max-width: 35%">
+      <input type="text" id="forminput" placeholder="Lable Input Text" name="search2" />
+      <button type="submit">Button</button>
+    </form>
+ 
+    <div class="right">
+      <input type="text" id="index-dex" placeholder=" - &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; + " />
+      <br />
+      <br /><br />
+      <label class="container"
+        >Checkbox
+        <input type="checkbox" checked="checked" />
+        <span class="checkmark"></span>
+      </label>
+ 
+      <br />
+      <label class="container-round"
+        >Radio Button
+        <input type="checkbox" checked="checked" />
+        <span class="checkmark-round"></span>
+      </label>
+ 
+      <br />
+      <label class="switch">
+        <input type="checkbox" checked />
+        <span class="slider round"></span>
+      </label>
+      Switch
+      <br />
+    </div>
+  </body>
+</html>
